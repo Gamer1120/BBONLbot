@@ -44,6 +44,8 @@ def telegram_sendMessage(text: str, chat_id: str, notify=True):
         'parse_mode': 'markdown',
         'disable_notification': not notify})
 
+
+telegram_sendMessage('Time to increase the FOMO! Scraping Bannergress for offline banners...', '@bbonldata', True)
 banners = getAllNLBanners()
 knownOfflineBanners = getAllKnownOfflineBanners()
 print(str(len(banners)) + " banners found. Now processing.")
@@ -61,3 +63,5 @@ for banner in getAllNLBanners():
             print(telegram_sendMessage('https://bannergress.com/banner/' + id + '\nOffline per ' + results['plannedOfflineDate'] + '.', '@bbonldata', True).content)
             print("https://bannergress.com/banner/" + results['id'] + " " + results['plannedOfflineDate'])
     time.sleep(0.5)
+
+telegram_sendMessage('Nightly run completed! Have fun with the increased levels of FOMO! :)', '@bbonldata', True)
